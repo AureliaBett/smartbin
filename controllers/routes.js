@@ -3,9 +3,7 @@ var router = express.Router();
 var db = require('../models/db');
 
 router.get('/', function(req, res) {
-  res.send('hello there');
-  //get database data
-  //render to view
+	res.render('home');
 });
 
 router.post('/trash', function(req, res){

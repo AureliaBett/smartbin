@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/trash', bodyParser.json());
 
+
 app.listen(port, function(){
   console.log('Listening on port ' + port);
 });
