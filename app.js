@@ -15,9 +15,6 @@ app.set('views', path.join(__dirname,'views'));
 app.use('/', router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-	res.render('home');
-})
 
 app.listen(port, function(){
   console.log('Listening on port ' + port);
