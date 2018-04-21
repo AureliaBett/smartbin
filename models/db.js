@@ -1,5 +1,5 @@
 // getting-started.js
-var mongoose = require('mongoose');  
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var trashSchema = new Schema({
@@ -10,45 +10,47 @@ var trashSchema = new Schema({
 
 var Trash = mongoose.model('Trash', trashSchema);
 
-function logCanData(id, weight, date)
+module.exports.logCanData = function (id, weight, date)
 {
     var newCanData = Trash({
         canID: id,
         weight: weight,
         timeStamp: date
-    }); 
+    });
 
     return newCanData.save();
 }
 
-function getHoursOfCanData(id,hours)
+module.exports.getHoursOfCanData = function(id,hours)
 {
     var hoursAgo = new Date();
     hoursAgo.setHours(hoursAgo.getHours() - hours);
     console.log(hours);
     console.log(hoursAgo);
-    return Trash.find({'canID': id}).where('timeStamp').gt(hoursAgo); 
+    return Trash.find({'canID': id}).where('timeStamp').gt(hoursAgo);
 }
 
-function getCanData(id)
+module.exports.getCanData = function(id)
 {
-    return Trash.find({'canID': id}); 
+    console.log(id);
+    return Trash.find({'canID': id});
 }
 
-function parseCanData(data, parseFunc)
+module.exports.parseCanData = function (data, parseFunc)
 {
     data.forEach(parseFunc);
 }
 
-function parseCanRecord(record)
+module.exports.parseCanRecord = function(record)
 {
     console.log(record.canID, record.weight, record.timeStamp);
+    return {'id': record.canID, 'weight': record.weight, 'time': record.timeStamp};
 }
 
 
-var db = mongoose.connect('mongodb://localhost/TrashDB');
 
-async function logTestData()
+var db = mongoose.connect('mongodb://localhost/TrashDB');
+module.exports.logTestData = async function ()
 {
     await logCanData(2,3.50, "2017-04-21T14:21:00.201Z");
     await logCanData(1,4.50, "2018-04-21T10:21:00.201Z");
@@ -63,4 +65,4 @@ async function logTestData()
 
 //getCanData(1).then(function (data) {parseCanData(data,parseCanRecord)});
 
-getHoursOfCanData(1,1000).then(function (data) {parseCanData(data,parseCanRecord)});
+//getHoursOfCanData(1,1000).then(function (data) {parseCanData(data,parseCanRecord)});

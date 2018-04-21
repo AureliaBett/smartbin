@@ -1,14 +1,6 @@
 //make a fetch request to the server to retrieve weight data
 
-var url = 'localhost:8080/trashdata';
-var trashData;
-fetch(url)
-.then(function(response) {return response.json(); })
-.then(function(json) {
-  for(var i = 0; i < 7; i++) {
-    trashData.push(json.trash[i].weight);
-  }
-});
+var trashData = [];
 
 //sets up a line chart
 var ctx = document.getElementById("trash-analytics").getContext('2d');
@@ -20,7 +12,7 @@ var lineGraph = new Chart(ctx, {
       {
       //line 1
       label: 'Pounds of Trash',
-      data: [20, 28, 34, 48, 56, 63, 72],
+      data: [],
       borderColor: "#2b81f1",
       fill: false
     },
@@ -42,4 +34,17 @@ var lineGraph = new Chart(ctx, {
           }]
       }
   }
+});
+
+var url = 'http://localhost:8080/trashdata';
+fetch(url)
+.then(function(response) {return response.json(); })
+.then(function(json) {
+  for(var i = 0; i < 7; i++) {
+    trashData.push(json.data[i].weight);
+    lineGraph.data.datasets[0].data.push(json.data[i].weight);
+    //console.log(json.data[i].weight);
+    console.log(trashData[i]);
+  }
+  lineGraph.update();
 });
