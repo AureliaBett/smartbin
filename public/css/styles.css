@@ -8,6 +8,7 @@
   list-style: none;
 
   font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
 }
 
 html,
@@ -17,19 +18,45 @@ body {
 }
 
 body {
-  background-color: hsl(84, 76%, 76%);
+  /*background-color: hsl(84, 76%, 76%);*/
+  background-image: url("../images/sakura.png");
+  box-shadow: 0px 0px 5px 3px #f1d8cd;
 }
 
-.header, .main, .graph, .main-content, .footer {
+/*.header, .main, .graph, .main-content, .footer {
   border: 1px solid red;
 }
+*/
 
 .header {
   display: flex;
   height: 50px;
   width: 100%;
+  justify-content: space-between;
+  align-content: space-between;
+  background-color: #ccf197;
+}
 
-  background-color: #9ee066;
+.header ul {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+
+  font-weight: bold;
+}
+.header li {
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-size: 20px;
+}
+
+.header a {
+  font-size: 14px;
 }
 
 .main {
@@ -47,20 +74,46 @@ body {
   background-color: #f0ede7;
 }
 
+#trash-analytics {
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  margin: auto;
+}
+
 .main-content {
   display: flex;
-  height: ;
+  flex-wrap: wrap;
   width: 100%;
 
   background-color: #f0ede7
 }
 
+.main-content h3 {
+  font-size: 20px;
+
+  margin: 20px;
+}
+
 .trash-facts {
   counter-reset: trash-facts;
 }
-li::before {
+
+.trash-facts li{
+  display: inline-block;
+  margin: 20px;
+
+  line-height: 30px;
+}
+
+.trash-facts li::before {
   content: counter(trash-facts);
   counter-increment: trash-facts;
+  padding-right: 20px;
+
+  font-size: 18px;
+  font-weight: bold;
+
 }
 
 .footer {
@@ -68,5 +121,17 @@ li::before {
   height: 50px;
   width: 100%;
 
-  background-color: #9ee066;
+  background-color: #ccf197;
+}
+
+.footer ul {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer li {
+  display: inline-block;
 }
