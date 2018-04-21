@@ -1,0 +1,27 @@
+{
+  "name": "smartbin",
+  "version": "1.0.0",
+  "description": "An IoT wastebin built for the WiCS Hackathon 2018",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstringer/smartbin.git"
+  },
+  "author": "Jack Stringer, Joseph Wells, Jason Graalum, Ram Bhattarai, Justin Schrader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jstringer/smartbin/issues"
+  },
+  "homepage": "https://github.com/jstringer/smartbin#readme",
+  "dependencies": {
+    "d3": "^5.1.0",
+    "express": "^4.16.3",
+    "jsdom": "^11.8.0",
+    "mongodb": "^3.0.7",
+    "mongoose": "^5.0.15",
+    "pug": "^2.0.3"
+  }
+}
